@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pritam Saikia – Senior Customer Support & Operations Leader</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-dark: #8B6914;
+    --deep: #0D0D0D;
+    --charcoal: #1A1A1A;
+    --mid: #2C2C2C;
+    --surface: #1F1F1F;
+    --text: #F0EDE6;
+    --muted: #999;
+    --accent-teal: #4ECDC4;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--deep);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(13,13,13,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2.5rem;
+  }
+
+  nav a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+
+  nav a:hover { color: var(--gold); }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    padding: 8rem 4rem 4rem;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 80% 50%, rgba(201,168,76,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 60% at 20% 80%, rgba(78,205,196,0.04) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+
+  h1.hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.5rem, 9vw, 7.5rem);
+    font-weight: 900;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.3rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards;
+  }
+
+  h1.hero-name span.gold { color: var(--gold); }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1rem, 2.5vw, 1.6rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--muted);
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.6s forwards;
+  }
+
+  .hero-desc {
+    max-width: 560px;
+    font-size: 1rem;
+    color: #aaa;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.8s forwards;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 1.0s forwards;
+  }
+
+  .stat-item { text-align: center; }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--gold);
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.8s 1.2s forwards;
+  }
+
+  .btn-primary {
+    padding: 0.9rem 2.2rem;
+    background: var(--gold);
+    color: var(--deep);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+  }
+
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  .btn-outline {
+    padding: 0.9rem 2.2rem;
+    background: transparent;
+    color: var(--gold);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid rgba(201,168,76,0.4);
+    cursor: pointer;
+    transition: border-color 0.3s, background 0.3s, transform 0.2s;
+  }
+
+  .btn-outline:hover { border-color: var(--gold); background: rgba(201,168,76,0.06); transform: translateY(-2px); }
+
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0;
+    animation: fadeIn 1s 2s forwards;
+  }
+
+  .scroll-indicator span {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 6rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+
+  .section-divider {
+    width: 60px;
+    height: 2px;
+    background: var(--gold);
+    margin-bottom: 3.5rem;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .about-text { color: #bbb; line-height: 1.9; }
+  .about-text p { margin-bottom: 1.2rem; }
+
+  .info-list { list-style: none; }
+  .info-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    font-size: 0.9rem;
+  }
+  .info-list li span:first-child { color: var(--muted); text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.1em; }
+  .info-list li span:last-child { color: var(--text); font-weight: 400; }
+
+  /* SKILLS */
+  #skills { background: var(--charcoal); max-width: 100%; }
+  .skills-inner { max-width: 1200px; margin: 0 auto; padding: 6rem 4rem; }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill-card {
+    background: var(--surface);
+    border: 1px solid rgba(201,168,76,0.1);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 0;
+    background: var(--gold);
+    transition: height 0.3s;
+  }
+
+  .skill-card:hover { border-color: rgba(201,168,76,0.3); transform: translateY(-4px); }
+  .skill-card:hover::before { height: 100%; }
+
+  .skill-icon {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .skill-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    color: var(--text);
+  }
+
+  .skill-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+  /* EXPERIENCE */
+  .timeline { position: relative; }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+  }
+
+  .timeline-item {
+    padding-left: 3rem;
+    padding-bottom: 4rem;
+    position: relative;
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: slideIn 0.6s forwards;
+  }
+
+  .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+  .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+  .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+  .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+
+  .timeline-dot {
+    position: absolute;
+    left: -5px;
+    top: 6px;
+    width: 11px;
+    height: 11px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(201,168,76,0.15);
+  }
+
+  .timeline-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  .timeline-date {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    text-transform: uppercase;
+    background: rgba(201,168,76,0.1);
+    padding: 0.25rem 0.8rem;
+    border: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .timeline-company {
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  .timeline-role {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+
+  .timeline-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .timeline-list li {
+    font-size: 0.88rem;
+    color: #aaa;
+    padding-left: 1.2rem;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .timeline-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    opacity: 0.7;
+  }
+
+  /* ACHIEVEMENTS */
+  .achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .achievement-card {
+    background: var(--surface);
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    transition: transform 0.3s;
+  }
+
+  .achievement-card:hover { transform: translateY(-6px); }
+
+  .achievement-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--gold);
+    display: block;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .achievement-label {
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* TOOLS */
+  .tools-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .tool-tag {
+    padding: 0.45rem 1.1rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.8rem;
+    color: #ccc;
+    letter-spacing: 0.04em;
+    transition: border-color 0.3s, color 0.3s, background 0.3s;
+    cursor: default;
+  }
+
+  .tool-tag:hover { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,0.05); }
+
+  .tool-tag.highlight { border-color: rgba(201,168,76,0.35); color: var(--gold-light); }
+
+  /* CONTACT */
+  #contact { background: var(--charcoal); max-width: 100%; }
+  .contact-inner { max-width: 1200px; margin: 0 auto; padding: 6rem 4rem; }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .contact-icon {
+    width: 42px;
+    height: 42px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .contact-item-text { display: flex; flex-direction: column; }
+  .contact-item-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.2rem; }
+  .contact-item-value { font-size: 0.95rem; color: var(--text); }
+
+  .languages-section { margin-top: 2rem; }
+  .lang-title { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+  .lang-pills { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .lang-pill {
+    padding: 0.35rem 1rem;
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.25);
+    color: var(--gold-light);
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 2rem 4rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
+  footer span { color: var(--gold); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideIn {
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    nav ul { gap: 1.2rem; }
+    #hero, section, .skills-inner, .contact-inner { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    h1.hero-name { font-size: 3.2rem; }
+    .hero-stats { gap: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">P.S.</div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero" style="max-width:100%; padding-top:8rem;">
+  <div class="hero-bg"></div>
+  <p class="hero-eyebrow">Customer Success & Operations Leader</p>
+  <h1 class="hero-name">
+    <span class="gold">Pritam</span><br>Saikia
+  </h1>
+  <p class="hero-title">8+ Years of Building Exceptional Customer Experiences</p>
+  <p class="hero-desc">
+    A results-driven operations leader specializing in client success, team leadership, and process transformation across healthcare, SaaS, e-commerce, and digital payments.
+  </p>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <span class="stat-num">95%+</span>
+      <span class="stat-label">CSAT Achieved</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">75%+</span>
+      <span class="stat-label">Customer Retention</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">8+</span>
+      <span class="stat-label">Years Experience</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">15</span>
+      <span class="stat-label">Team Led</span>
+    </div>
+  </div>
+  <div class="hero-cta">
+    <a href="#experience" class="btn-primary">View Experience</a>
+    <a href="#contact" class="btn-outline">Get in Touch</a>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <span class="section-label">Who I Am</span>
+  <h2 class="section-title">About Me</h2>
+  <div class="section-divider"></div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I am a Senior Customer Support & Operations Leader with over 8 years of experience driving excellence across multi-industry environments. My career spans healthcare (HIPAA-compliant), e-commerce, SaaS, retail, gold & jewelry, and digital payments.</p>
+      <p>I specialize in transforming customer touchpoints — from L1–L2 escalation management to end-to-end payment gateway operations — into measurable outcomes. I've consistently delivered 95%+ CSAT scores and reduced churn through data-driven retention initiatives.</p>
+      <p>Beyond metrics, I am passionate about building high-performing teams, implementing CRM and AI automation workflows, and creating cross-functional alignment that leads to lasting business impact.</p>
+    </div>
+    <ul class="info-list">
+      <li><span>Location</span><span>Bengaluru, India</span></li>
+      <li><span>Phone</span><span>9108514680</span></li>
+      <li><span>Email</span><span>pritamsaikia2016@gmail.com</span></li>
+      <li><span>Education</span><span>BSc (IT), SMU</span></li>
+      <li><span>Certification</span><span>AI Tool Certified – Be10X</span></li>
+      <li><span>Languages</span><span>Hindi, English, Assamese, Bengali, Oriya</span></li>
+      <li><span>Specialization</span><span>L1–L2 Escalation, SLA/KPI, Payments</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements" style="padding-top:0;">
+  <span class="section-label">Key Metrics</span>
+  <h2 class="section-title">Impact by Numbers</h2>
+  <div class="section-divider"></div>
+  <div class="achievements-grid">
+    <div class="achievement-card">
+      <span class="achievement-num">95%+</span>
+      <span class="achievement-label">CSAT Score Maintained</span>
+    </div>
+    <div class="achievement-card">
+      <span class="achievement-num">75%+</span>
+      <span class="achievement-label">Customer Retention Improved</span>
+    </div>
+    <div class="achievement-card">
+      <span class="achievement-num">15</span>
+      <span class="achievement-label">Professionals Led & Mentored</span>
+    </div>
+    <div class="achievement-card">
+      <span class="achievement-num">8+</span>
+      <span class="achievement-label">Years Multi-Industry Experience</span>
+    </div>
+    <div class="achievement-card">
+      <span class="achievement-num">L1–L2</span>
+      <span class="achievement-label">Escalation Management Expertise</span>
+    </div>
+    <div class="achievement-card">
+      <span class="achievement-num">5+</span>
+      <span class="achievement-label">Industries Served</span>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS CARDS -->
+<div id="skills">
+  <div class="skills-inner">
+    <span class="section-label">What I Bring</span>
+    <h2 class="section-title">Core Competencies</h2>
+    <div class="section-divider"></div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <span class="skill-icon">🎯</span>
+        <h3>Escalation & Issue Resolution</h3>
+        <p>Expert in L1–L2 escalation handling, root cause analysis, and SLA-driven issue resolution across email, chat, calls, and voicemail channels.</p>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">👥</span>
+        <h3>Team Leadership</h3>
+        <p>Led and mentored teams of up to 15 support professionals, improving productivity, service quality, and compliance adherence.</p>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">💳</span>
+        <h3>Payment Gateway Operations</h3>
+        <p>Transaction handling, payment reconciliation, settlement processing, invoice generation, refund management, and dispute resolution.</p>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">📊</span>
+        <h3>Data Analysis & Reporting</h3>
+        <p>Weekly, monthly, and annual performance reporting. CSAT, NPS, FCR trend analysis to drive data-informed retention strategies.</p>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🏥</span>
+        <h3>Healthcare Operations (HIPAA)</h3>
+        <p>Managed US & UK healthcare clients with full HIPAA compliance — software navigation, insurance dispute resolution, and clinical workflow coordination.</p>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🤖</span>
+        <h3>CRM & AI Automation</h3>
+        <p>Implemented CRM workflows and AI tools to analyze customer lifetime value, reduce churn, and maintain consistent service quality at scale.</p>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">📈</span>
+        <h3>Upselling & Revenue Growth</h3>
+        <p>Identified and converted upsell/cross-sell opportunities, driving revenue growth through customer success strategies, renewals, and referral programs.</p>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🔗</span>
+        <h3>Cross-Functional Collaboration</h3>
+        <p>Coordinated with operations, technical, product, logistics, and seller teams to resolve complex issues and improve end-to-end service delivery.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <span class="section-label">My Journey</span>
+  <h2 class="section-title">Work Experience</h2>
+  <div class="section-divider"></div>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-meta">
+        <span class="timeline-date">Dec 2024 – Present</span>
+        <span class="timeline-company">Milliman India Pvt Ltd · US Remote</span>
+      </div>
+      <p class="timeline-role">Senior Customer Service Administrator</p>
+      <ul class="timeline-list">
+        <li>Support US & UK healthcare clients with full HIPAA compliance — software navigation, product troubleshooting, and clinical workflows.</li>
+        <li>Managed SLAs and KPIs via real-time performance dashboards ensuring timely resolution across all channels.</li>
+        <li>Led and mentored a team of 10 support professionals, improving productivity and customer satisfaction metrics.</li>
+        <li>Handled medical insurance dispute resolution and cross-functional workflow coordination for timely service delivery.</li>
+        <li>Implemented CRM and AI automation to analyze customer lifetime value and maintain consistent service quality.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-meta">
+        <span class="timeline-date">Jul 2022 – Nov 2024</span>
+        <span class="timeline-company">Connect and Heal · Bengaluru</span>
+      </div>
+      <p class="timeline-role">Senior Customer Support Executive</p>
+      <ul class="timeline-list">
+        <li>Managed L1–L2 escalations and complex healthcare cases for domestic and international clients, maintaining 95%+ CSAT.</li>
+        <li>Improved customer experience by analyzing CSAT, NPS, and FCR trends, contributing to 75%+ customer retention.</li>
+        <li>Created and shared payment links via social media, WhatsApp, and SMS; monitored transactions, generated invoices, and processed refunds.</li>
+        <li>Led a team of 15 support professionals; trained junior staff on service quality, compliance, and healthcare protocols.</li>
+        <li>Identified upsell and cross-sell opportunities, contributing to revenue growth through customer success strategies.</li>
+        <li>Prepared weekly, monthly, and annual reports; presented insights in review meetings to support decision-making.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-meta">
+        <span class="timeline-date">Sep 2021 – Feb 2022</span>
+        <span class="timeline-company">GlowRoad (E-Com Platform) · Bengaluru</span>
+      </div>
+      <p class="timeline-role">Senior Customer Support Executive</p>
+      <ul class="timeline-list">
+        <li>Managed end-to-end marketplace operations: order processing, payment verification, and post-sale support.</li>
+        <li>Coordinated with sellers, logistics, and internal teams to ensure smooth order fulfillment and on-time delivery.</li>
+        <li>Monitored order success rates; resolved issues impacting conversion and repeat purchases.</li>
+        <li>Handled customer queries across social media, WhatsApp, and Google My Business channels.</li>
+        <li>Trained junior staff and improved service workflows to enhance overall support quality.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-meta">
+        <span class="timeline-date">Sep 2019 – Aug 2021</span>
+        <span class="timeline-company">Melorra (August Jewelry Pvt Ltd) · Bengaluru</span>
+      </div>
+      <p class="timeline-role">Customer Service Executive</p>
+      <ul class="timeline-list">
+        <li>Delivered end-to-end customer support for gold and jewelry products covering pricing, purity, weight, billing, and order status inquiries.</li>
+        <li>Managed refunds, cancellations, and replacements in line with gold pricing standards and company policies.</li>
+        <li>Ensured KYC, compliance, and audit adherence for gold transactions.</li>
+        <li>Addressed escalations with empathy to drive customer retention and repeat purchase behavior.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-meta">
+        <span class="timeline-date">Jan 2017 – Sep 2019</span>
+        <span class="timeline-company">RX Healthcare Magic Pvt Ltd (Ebix Inc) · Bengaluru</span>
+      </div>
+      <p class="timeline-role">Senior Customer Service Executive</p>
+      <ul class="timeline-list">
+        <li>Delivered end-to-end customer support via email, calls, and ticketing systems for healthcare processes.</li>
+        <li>Handled L1–L2 escalations ensuring timely resolution within SLA and KPI benchmarks.</li>
+        <li>Coordinated with operations, technical, and product teams to resolve system issues and improve service efficiency.</li>
+        <li>Monitored ticket queues to reduce backlog and maintain TAT, CSAT, and quality standards.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools" style="padding-top:0;">
+  <span class="section-label">Tech Stack</span>
+  <h2 class="section-title">Tools & Technologies</h2>
+  <div class="section-divider"></div>
+
+  <p style="font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); margin-bottom:0.8rem;">CRM & Ticketing</p>
+  <div class="tools-grid" style="margin-bottom:2rem;">
+    <span class="tool-tag highlight">Salesforce</span>
+    <span class="tool-tag highlight">Freshdesk</span>
+    <span class="tool-tag highlight">Zendesk</span>
+    <span class="tool-tag">Zoho</span>
+    <span class="tool-tag">Kapture</span>
+    <span class="tool-tag">Jira</span>
+    <span class="tool-tag">Asana</span>
+    <span class="tool-tag">Ozontel</span>
+    <span class="tool-tag">Exotel</span>
+    <span class="tool-tag">Magento</span>
+  </div>
+
+  <p style="font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); margin-bottom:0.8rem;">AI Tools</p>
+  <div class="tools-grid" style="margin-bottom:2rem;">
+    <span class="tool-tag highlight">ChatGPT</span>
+    <span class="tool-tag highlight">Claude</span>
+    <span class="tool-tag">Gemini</span>
+  </div>
+
+  <p style="font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); margin-bottom:0.8rem;">Office & Communication</p>
+  <div class="tools-grid" style="margin-bottom:2rem;">
+    <span class="tool-tag">Microsoft Excel</span>
+    <span class="tool-tag">Word</span>
+    <span class="tool-tag">PowerPoint</span>
+    <span class="tool-tag">Google Workspace</span>
+    <span class="tool-tag">WhatsApp (Interakt)</span>
+    <span class="tool-tag">Google My Business</span>
+  </div>
+
+  <p style="font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); margin-bottom:0.8rem;">Channels & Industries</p>
+  <div class="tools-grid">
+    <span class="tool-tag">Email</span>
+    <span class="tool-tag">Live Chat</span>
+    <span class="tool-tag">Voice</span>
+    <span class="tool-tag">Social Media</span>
+    <span class="tool-tag">Healthcare (HIPAA)</span>
+    <span class="tool-tag">E-commerce</span>
+    <span class="tool-tag">SaaS</span>
+    <span class="tool-tag">Retail</span>
+    <span class="tool-tag">Gold & Jewelry</span>
+    <span class="tool-tag">Digital Payments</span>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div id="contact">
+  <div class="contact-inner">
+    <span class="section-label">Let's Connect</span>
+    <h2 class="section-title">Get in Touch</h2>
+    <div class="section-divider"></div>
+    <div class="contact-grid">
+      <div>
+        <p style="color:#aaa; line-height:1.9; margin-bottom:2rem;">I'm open to exploring new opportunities in customer success, operations leadership, or service excellence roles. Let's connect and discuss how I can add value to your organization.</p>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div class="contact-item-text">
+              <span class="contact-item-label">Location</span>
+              <span class="contact-item-value">Bengaluru, Karnataka, India</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div class="contact-item-text">
+              <span class="contact-item-label">Phone</span>
+              <span class="contact-item-value">+91 9108514680</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div class="contact-item-text">
+              <span class="contact-item-label">Email</span>
+              <span class="contact-item-value">pritamsaikia2016@gmail.com</span>
+            </div>
+          </div>
+        </div>
+        <div class="languages-section">
+          <p class="lang-title">Languages</p>
+          <div class="lang-pills">
+            <span class="lang-pill">Hindi</span>
+            <span class="lang-pill">English</span>
+            <span class="lang-pill">Assamese</span>
+            <span class="lang-pill">Bengali</span>
+            <span class="lang-pill">Oriya</span>
+          </div>
+        </div>
+      </div>
+      <div style="background:var(--surface); border:1px solid rgba(201,168,76,0.12); padding:2.5rem;">
+        <h3 style="font-family:'Playfair Display',serif; font-size:1.4rem; margin-bottom:0.4rem;">Pritam Saikia</h3>
+        <p style="color:var(--muted); font-size:0.85rem; margin-bottom:2rem; font-style:italic;">Senior Customer Support & Operations Leader</p>
+        <div style="display:flex; flex-direction:column; gap:1rem;">
+          <div style="display:flex; justify-content:space-between; padding:0.8rem 0; border-bottom:1px solid rgba(255,255,255,0.06); font-size:0.85rem;">
+            <span style="color:var(--muted);">Total Experience</span>
+            <span style="color:var(--gold);">8+ Years</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; padding:0.8rem 0; border-bottom:1px solid rgba(255,255,255,0.06); font-size:0.85rem;">
+            <span style="color:var(--muted);">CSAT Score</span>
+            <span style="color:var(--gold);">95%+</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; padding:0.8rem 0; border-bottom:1px solid rgba(255,255,255,0.06); font-size:0.85rem;">
+            <span style="color:var(--muted);">Retention Rate</span>
+            <span style="color:var(--gold);">75%+</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; padding:0.8rem 0; border-bottom:1px solid rgba(255,255,255,0.06); font-size:0.85rem;">
+            <span style="color:var(--muted);">Team Size Led</span>
+            <span style="color:var(--gold);">Up to 15</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; padding:0.8rem 0; font-size:0.85rem;">
+            <span style="color:var(--muted);">Industries</span>
+            <span style="color:var(--gold);">Healthcare, SaaS, E-com +</span>
+          </div>
+        </div>
+        <a href="mailto:pritamsaikia2016@gmail.com" class="btn-primary" style="display:block; text-align:center; margin-top:2rem; text-decoration:none;">Send a Message</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 <span>Pritam Saikia</span> · Customer Success & Operations Leader · Bengaluru, India</p>
+</footer>
+
+</body>
+</html>
